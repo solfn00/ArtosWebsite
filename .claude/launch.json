@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "artos-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "walkthrough-3d",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "walkthrough-3d", "run", "dev"],
+      "port": 5174
+    }
+  ]
+}
