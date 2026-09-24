@@ -1,12 +1,10 @@
 import { site, telHref } from "@/content/site";
 import { ArrowLeft, PhoneIcon, PinIcon, WhatsAppIcon, waHref } from "./Graphics";
+import Socials from "./Socials";
 
 export default function Contact() {
-  const { phone, whatsapp, instagram } = site.contact;
+  const { phone, whatsapp } = site.contact;
   const closed = site.temporarilyClosed;
-  const extra = [
-    instagram && { href: instagram, label: "Instagram" },
-  ].filter(Boolean) as { href: string; label: string }[];
 
   return (
     <section id="contact" aria-labelledby="contact-title" className="on-light relative bg-sand py-24 sm:py-36">
@@ -71,11 +69,17 @@ export default function Contact() {
             לתפריט
             <ArrowLeft />
           </a>
-          {extra.map((c) => (
-            <a key={c.href} href={c.href} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
-              {c.label}
-            </a>
-          ))}
+        </div>
+
+        {/* the profiles, where people look for what's new while the truck is closed */}
+        <div className="mx-auto mt-16 max-w-2xl border-t border-navy/15 pt-10" data-anim="up">
+          <p className="eyebrow justify-center text-clay">עקבו אחרינו</p>
+          <p className="mx-auto mt-4 max-w-sm text-muted">
+            העדכונים, התמונות והחדשות של {site.nameHe} — באינסטגרם ובפייסבוק.
+          </p>
+          <div className="mt-6">
+            <Socials />
+          </div>
         </div>
       </div>
     </section>

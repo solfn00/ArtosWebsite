@@ -57,7 +57,13 @@ export const site = {
     phone: "053-665-1928" as string | null,
     /** Confirmed 2026-09-21 — same number as the phone. Digits only. */
     whatsapp: "972536651928" as string | null,
-    instagram: null as string | null, // full profile URL
+    /**
+     * Supplied by the owner 2026-09-24, both confirmed live. The share
+     * tracking (`utm_source`, `stkn`, `locale`) is stripped on purpose: the
+     * `stkn` token is tied to the owner's own share session.
+     */
+    instagram: "https://www.instagram.com/artos.kitchen/" as string | null,
+    facebook: "https://www.facebook.com/p/Artos-100057154492461/" as string | null,
   },
 
   /**
@@ -95,6 +101,17 @@ export function isOpenNow(now = new Date()): boolean | null {
     return close > open ? minutes >= open && minutes < close : minutes >= open || minutes < close;
   });
 }
+
+/**
+ * The business's own social profiles, in the order they are shown.
+ * Handles are read off the profile URLs — nothing here is guessed.
+ */
+export const socials = (
+  [
+    { key: "instagram", label: "Instagram", handle: "@artos.kitchen", href: site.contact.instagram },
+    { key: "facebook", label: "Facebook", handle: "Artos", href: site.contact.facebook },
+  ] as const
+).filter((s): s is typeof s & { href: string } => Boolean(s.href));
 
 /** "053-665-1928" → "tel:+972536651928" */
 export function telHref(phone: string) {
@@ -214,7 +231,7 @@ export const menu: MenuCategory[] = [
 export const signatureDish = "שניצל בחלה";
 
 
-export const photos = {
+export const photos = {
   // — supplied by the business, 2026-09-22 —
   burgerTray: {
     src: "/images/burger-tray.jpg",

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { nav, photos, site } from "@/content/site";
 import { Ridge } from "./Graphics";
+import Socials from "./Socials";
 
 export default function Footer() {
   return (
@@ -15,6 +16,9 @@ export default function Footer() {
             <p className="text-muted-dark">
               {site.slogan} · {site.location}
             </p>
+            <div className="mt-4">
+              <Socials variant="icons" />
+            </div>
           </div>
         </div>
         <nav aria-label="ניווט תחתון">

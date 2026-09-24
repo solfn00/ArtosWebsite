@@ -10,7 +10,7 @@ import Navbar from "@/components/Navbar";
 import Motion from "@/components/Motion";
 import Reviews from "@/components/Reviews";
 import MobileActionBar from "@/components/MobileActionBar";
-import { menu, photos, site, siteUrl, telHref } from "@/content/site";
+import { menu, photos, site, siteUrl, socials, telHref } from "@/content/site";
 
 /** every price on the menu, low to high — used for priceRange below */
 const prices = menu
@@ -41,6 +41,7 @@ const jsonLd = {
   geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
   hasMap: site.mapsIsPlaceholder ? undefined : site.mapsUrl,
   telephone: site.contact.phone ? telHref(site.contact.phone).replace("tel:", "") : undefined,
+  sameAs: socials.map((s) => s.href),
   priceRange: `₪${prices[0]}–₪${prices[prices.length - 1]}`,
   hasMenu: `${siteUrl}/#food`,
 };
